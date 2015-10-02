@@ -32,11 +32,12 @@ The high-level interface abstracts the C functions, structures, and pointers int
 
 Where appropriate, Ruby classes have been constructed to map to the concepts in Harfbuzz. Hence:
 
-| C           | Ruby             |
-| hb_blob_t   | Harfbuzz::Blob   |
-| hb_buffer_t | Harfbuzz::Buffer |
-| hb_face_t   | Harfbuzz::Face   |
-| hb_font_t   | Harfbuzz::Font   |
+| C           | Ruby
+| ----------- | ----
+| hb_blob_t   | Harfbuzz::Blob
+| hb_buffer_t | Harfbuzz::Buffer
+| hb_face_t   | Harfbuzz::Face
+| hb_font_t   | Harfbuzz::Font
 
 The shaping method itself is in the base Harfbuzz module, as `Harfbuzz.shape(...)`.
 
