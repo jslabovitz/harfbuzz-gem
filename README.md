@@ -2,7 +2,7 @@ The Harfbuzz gem is a Ruby interface to the Harfbuzz text shaping engine. By usi
 
 For more information about Harfbuzz itself, see [harfbuzz.org](http://harfbuzz.org).
 
-For an example of use, see [example.rb](harfbuzz/examples/example.rb). From the base directory of this gem, you can run this example:
+For an example of use, see [examples/example.rb](https://github.com/jslabovitz/harfbuzz-gem/blob/master/examples/example.rb). You can run this from the base directory of the gem:
 
     ruby examples/example.rb
 
