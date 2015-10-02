@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.description   = %q{
     Harfbuzz is a Ruby interface to the Harfbuzz text shaping engine.
   }
-  s.homepage      = 'http://github.com/jslabovitz/harfbuzz'
+  s.homepage      = 'http://github.com/jslabovitz/harfbuzz-gem'
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
