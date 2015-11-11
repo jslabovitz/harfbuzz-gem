@@ -30,6 +30,12 @@ module Harfbuzz
     ]
   end
 
+  MinimumHarfbuzzVersion = '1.0.4'
+
+  unless Gem::Version.new(Harfbuzz.version_string) >= Gem::Version.new(MinimumHarfbuzzVersion)
+    raise "Harfbuzz C library is version #{Harfbuzz.version_string}, but this gem requires version #{MinimumHarfbuzzVersion} or later"
+  end
+
 end
 
 require 'harfbuzz/base'
