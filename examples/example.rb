@@ -15,7 +15,15 @@ puts "Shapers: #{Harfbuzz.shapers.join(', ')}"
 #
 
 face = Harfbuzz::Face.new(File.open('/Library/Fonts/ACaslonPro-Regular.otf', 'rb'))
+
+puts "Font face index: #{face.index}"
+puts "Font face upem: #{face.upem}"
+puts "Font face glyph count: #{face.glyph_count}"
+
 font = Harfbuzz::Font.new(face)
+
+puts "Font scale: #{font.scale}"
+puts "Font ppem: #{font.ppem}"
 
 #
 # Create a buffer to hold the text and the resulting glyphs/positions.
