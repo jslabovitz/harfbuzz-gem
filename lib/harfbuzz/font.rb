@@ -22,7 +22,7 @@ module Harfbuzz
   attach_function :hb_font_glyph_to_string, [
     :hb_font_t,     # font
     :hb_codepoint_t, # glyph
-    :pointer,       # s
+    :pointer,       # string
     :uint,          # size
   ], :void
 
