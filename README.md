@@ -53,6 +53,13 @@ There are no tests or specs.
 Memory management may not be correct.
 
 
+## To-do
+
+Implement hb_buffer_set_* functions.
+
+Add documentation & tests.
+
+
 ## Feedback
 
 As this is a new project, I'd love to hear your feedback. Email me at [johnl@johnlabovitz.com](mailto:johnl@johnlabovitz.com).
