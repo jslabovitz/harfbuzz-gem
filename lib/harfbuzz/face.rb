@@ -26,7 +26,7 @@ module Harfbuzz
         raise "Unknown input type: #{input.class}"
       end
       @hb_face = Harfbuzz.hb_face_create(blob.hb_blob, face_index)
-      define_finalizer(:hb_buffer_destroy, @hb_face)
+      define_finalizer(:hb_face_destroy, @hb_face)
     end
 
     def index
