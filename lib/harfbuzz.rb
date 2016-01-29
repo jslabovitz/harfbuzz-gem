@@ -9,8 +9,9 @@ module Harfbuzz
   ffi_lib 'harfbuzz'
 
   typedef :pointer, :hb_destroy_func_t
-  typedef :uint32, :hb_codepoint_t
-  typedef :bool, :hb_bool_t
+  typedef :uint32,  :hb_codepoint_t
+  typedef :bool,    :hb_bool_t
+  typedef :int32,   :hb_position_t
 
   attach_function :hb_version_string, [], :string
   attach_function :hb_version, [:pointer, :pointer, :pointer], :void
