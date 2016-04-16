@@ -48,8 +48,6 @@ Only a small number of basic Harfbuzz functions are mapped to Ruby methods. More
 
 There is no documentation except this file and the example script.
 
-There are no tests or specs.
-
 Memory management may not be correct.
 
 
@@ -57,7 +55,7 @@ Memory management may not be correct.
 
 Implement hb_buffer_set_* functions.
 
-Add documentation & tests.
+Add documentation.
 
 
 ## Feedback
