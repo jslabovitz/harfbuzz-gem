@@ -11,14 +11,13 @@ Gem::Specification.new do |s|
   }
   s.homepage      = 'http://github.com/jslabovitz/harfbuzz-gem'
   s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
+  s.test_files    = `git ls-files -- test/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
-  s.require_paths = %w{lib ext}
-  s.extensions    = %w{ext/harfbuzz/extconf.rb}
-  s.platform      = Gem::Platform::RUBY
+  s.require_paths = %w{lib}
+
+  s.add_dependency 'ffi'
 
   s.add_development_dependency 'bundler'
   s.add_development_dependency 'rake'
-  s.add_development_dependency 'rake-compiler'
   s.add_development_dependency 'minitest'
 end
