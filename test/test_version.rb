@@ -18,9 +18,9 @@ module Harfbuzz
       assert version =~ /^\d+\.\d+/
     end
 
-    # def test_version_atleast
-    #   assert Harfbuzz.version_atleast(1, 0, 0)
-    # end
+    def test_version_at_least
+      assert Harfbuzz.version_at_least(1, 0, 0)
+    end
 
   end
 

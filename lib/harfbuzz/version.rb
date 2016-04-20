@@ -2,6 +2,7 @@ module Harfbuzz
 
   attach_function :hb_version_string, [], :string
   attach_function :hb_version, [:pointer, :pointer, :pointer], :void
+  attach_function :hb_version_atleast, [:uint, :uint, :uint], :bool
 
   def self.version_string
     hb_version_string
@@ -19,10 +20,14 @@ module Harfbuzz
     ]
   end
 
-  MinimumHarfbuzzVersion = '1.0.4'
+  def self.version_at_least(major, minor, micro)
+    Harfbuzz.hb_version_atleast(major, minor, micro)
+  end
 
-  unless Gem::Version.new(Harfbuzz.version_string) >= Gem::Version.new(MinimumHarfbuzzVersion)
-    raise "Harfbuzz C library is version #{Harfbuzz.version_string}, but this gem requires version #{MinimumHarfbuzzVersion} or later"
+  MinimumHarfbuzzVersion = [1, 0, 4]
+
+  unless version_at_least(*MinimumHarfbuzzVersion)
+    raise "Harfbuzz C library is version #{Harfbuzz.version_string}, but this gem requires version #{MinimumHarfbuzzVersion.join('.')} or later"
   end
 
 end
