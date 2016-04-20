@@ -1,8 +1,6 @@
-require './lib/harfbuzz/version'
-
 Gem::Specification.new do |s|
   s.name          = 'harfbuzz'
-  s.version       = Harfbuzz::VERSION
+  s.version       = '0.3'
   s.summary       = 'Ruby interface to the Harfbuzz text shaping engine'
   s.author        = 'John Labovitz'
   s.email         = 'johnl@johnlabovitz.com'
