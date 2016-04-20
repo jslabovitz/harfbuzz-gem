@@ -4,10 +4,7 @@ module Harfbuzz
 
   class TestFont < Minitest::Test
 
-    def setup
-      @face = load_face
-      @font = load_font(@face)
-    end
+    include Setup
 
     def test_scale
       scale = @font.scale

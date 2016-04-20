@@ -4,9 +4,7 @@ module Harfbuzz
 
   class TestFace < Minitest::Test
 
-    def setup
-      @face = load_face
-    end
+    include Setup
 
     def test_index
       assert @face.index == 0

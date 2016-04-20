@@ -4,10 +4,7 @@ module Harfbuzz
 
   class TestShaper < Minitest::Test
 
-    def setup
-      @face = load_face
-      @font = load_font(@face)
-    end
+    include Setup
 
     def test_shape
       buffer = Harfbuzz::Buffer.new
@@ -21,10 +18,10 @@ module Harfbuzz
       assert buffer.length == 1
 
       info, position = glyph_infos[0], glyph_positions[0]
-      glyph_name = @font.glyph_to_string(info[:codepoint])
+      glyph_name = @font.glyph_to_string(info.codepoint)
 
-      assert info[:codepoint] == 320
-      assert position[:x_advance] > 0
+      assert info.codepoint == 320
+      assert position.x_advance > 0
       assert glyph_name == 'f_i'
     end
 

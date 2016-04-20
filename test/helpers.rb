@@ -1,10 +1,19 @@
+$LOAD_PATH.unshift('lib')
+
 require 'harfbuzz'
 require 'minitest/autorun'
 
-def load_face
-  Harfbuzz::Face.new(File.open('/Library/Fonts/ACaslonPro-Regular.otf', 'rb'))
-end
+module Harfbuzz
 
-def load_font(face)
-  Harfbuzz::Font.new(face)
+  module Setup
+
+    def setup
+      @data = File.open('/Library/Fonts/ACaslonPro-Regular.otf', 'rb').read
+      @blob = Harfbuzz::Blob.new(@data)
+      @face = Harfbuzz::Face.new(@blob, 0)
+      @font = Harfbuzz::Font.new(@face)
+    end
+
+  end
+
 end
