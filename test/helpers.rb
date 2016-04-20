@@ -8,9 +8,9 @@ module Harfbuzz
   module Setup
 
     def setup
-      @data = File.open('/Library/Fonts/ACaslonPro-Regular.otf', 'rb').read
+      @data = File.open('/Library/Fonts/ACaslonPro-Regular.otf', 'rb')
       @blob = Harfbuzz::Blob.new(@data)
-      @face = Harfbuzz::Face.new(@blob, 0)
+      @face = Harfbuzz::Face.new(@blob)
       @font = Harfbuzz::Font.new(@face)
     end
 
