@@ -1,15 +1,19 @@
 require 'bundler'
-Bundler.require
 require 'bundler/gem_tasks'
-
 require 'minitest/autorun'
+require 'rake/extensiontask'
+require 'rake/testtask'
 
-desc 'Run tests.'
-task :test do
-  Dir.glob('./test/test_*.rb').each { |file| require file}
+# add compile tasks
+Rake::ExtensionTask.new('harfbuzz')
+
+Rake::TestTask.new do |t|
+  t.libs << 'test'
+  t.test_files = FileList['./test/test_*.rb']
+  t.verbose = true
 end
 
-desc 'Run benchmark.'
+desc 'Run benchmark'
 task :benchmark do
   load './examples/benchmark.rb'
 end
