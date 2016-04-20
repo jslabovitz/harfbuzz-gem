@@ -1,8 +1,3 @@
 .DS_Store
 Gemfile.lock
 pkg/
-tmp/
-*.log
-ext/**/Makefile
-*.o
-*.bundle
