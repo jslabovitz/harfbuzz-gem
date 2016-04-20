@@ -13,6 +13,18 @@ module Harfbuzz
       :var1,      :uint32,  # private
       :var2,      :uint32   # private
 
+    def codepoint
+      self[:codepoint]
+    end
+
+    def mask
+      self[:mask]
+    end
+
+    def cluster
+      self[:cluster]
+    end
+
   end
 
   class GlyphPosition < FFI::Struct
@@ -30,6 +42,22 @@ module Harfbuzz
           "#{k} = #{self[k.to_sym].inspect}"
         }.join(', ')
       ]
+    end
+
+    def x_advance
+      self[:x_advance]
+    end
+
+    def y_advance
+      self[:y_advance]
+    end
+
+    def x_offset
+      self[:x_offset]
+    end
+
+    def y_offset
+      self[:y_offset]
     end
 
   end
