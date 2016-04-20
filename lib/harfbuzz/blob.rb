@@ -25,7 +25,8 @@ module Harfbuzz
 
     attr_reader :hb_blob
 
-    def initialize(data, mode=0, user_data=nil)
+    def initialize(input, mode=0, user_data=nil)
+      data = data.read if data.kind_of?(IO)
       data_ptr = FFI::MemoryPointer.new(:char, data.size)
       data_ptr.put_bytes(0, data)
       @hb_blob = Harfbuzz.hb_blob_create(data_ptr, data.size, mode, user_data, nil)

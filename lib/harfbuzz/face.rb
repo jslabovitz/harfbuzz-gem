@@ -14,17 +14,7 @@ module Harfbuzz
 
     attr_reader :hb_face
 
-    def initialize(input, face_index=0)
-      blob = case input
-      when IO
-        Harfbuzz::Blob.new(input.read, :HB_MEMORY_MODE_READONLY)
-      when Blob
-        # use as-is
-      when String
-        Harfbuzz::Blob.new(input, :HB_MEMORY_MODE_READONLY)
-      else
-        raise "Unknown input type: #{input.class}"
-      end
+    def initialize(blob, face_index=0)
       @hb_face = Harfbuzz.hb_face_create(blob.hb_blob, face_index)
       define_finalizer(:hb_face_destroy, @hb_face)
     end
