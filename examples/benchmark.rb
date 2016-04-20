@@ -1,3 +1,5 @@
+$LOAD_PATH.unshift('lib')
+
 require 'benchmark'
 require 'harfbuzz'
 
@@ -6,7 +8,7 @@ Features = %w{+dlig +hlig}
 
 Benchmark.bm do |benchmark|
   benchmark.report do
-    face = Harfbuzz::Face.new(File.open('/Library/Fonts/ACaslonPro-Regular.otf', 'rb'))
+    face = Harfbuzz::Face.new(Harfbuzz::Blob.new(File.open('/Library/Fonts/ACaslonPro-Regular.otf', 'rb')))
     font = Harfbuzz::Font.new(face)
     Words.each do |word|
       buffer = Harfbuzz::Buffer.new
