@@ -1,6 +1,6 @@
 The Harfbuzz gem is a Ruby interface to the Harfbuzz text shaping engine. By using this gem, some input text, a font file, and a list of features, you can convert Unicode text to glyph descriptions that are ready to be rendered.
 
-For more information about Harfbuzz itself, see [harfbuzz.org](http://harfbuzz.org).
+For more information about Harfbuzz itself, see [harfbuzz.org](http://harfbuzz.org), or the [Harfbuzz manual](http://behdad.github.io/harfbuzz/).
 
 For an example of use, see [examples/example.rb](https://github.com/jslabovitz/harfbuzz-gem/blob/master/examples/example.rb). You can run this from the base directory of the gem:
 
@@ -48,14 +48,16 @@ Only a small number of basic Harfbuzz functions are mapped to Ruby methods. More
 
 There is no documentation except this file and the example script.
 
-Memory management may not be correct.
+Memory management may not be correct. (I've seen crashes when processing large amounts of text.)
 
 
 ## To-do
 
-Implement hb_buffer_set_* functions.
+- Implement hb_buffer_set_* functions.
 
-Add documentation.
+- Add documentation.
+
+- Investigate [Harfbuzz-Lua bindings](https://github.com/deepakjois/luaharfbuzz/wiki) for inspiration.
 
 
 ## Feedback
