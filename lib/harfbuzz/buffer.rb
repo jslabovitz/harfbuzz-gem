@@ -92,6 +92,7 @@ module Harfbuzz
     end
 
     def add_utf8(text, offset=0, length=-1)
+      raise "expected text in UTF-8 encoding, but received #{text.encoding}" unless text.encoding == Encoding::UTF_8
       text_ptr = FFI::MemoryPointer.new(:char, text.bytesize)
       text_ptr.put_bytes(0, text)
       Harfbuzz.hb_buffer_add_utf8(@hb_buffer, text_ptr, text.bytesize, offset, length)
