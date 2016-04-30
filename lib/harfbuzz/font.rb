@@ -25,6 +25,18 @@ module Harfbuzz
     :pointer,       # string
     :uint,          # size
   ], :void
+  attach_function :hb_font_get_glyph_name, [
+    :hb_font_t,     # font
+    :hb_codepoint_t, # glyph
+    :pointer,       # string
+    :uint,          # size
+  ], :bool
+  attach_function :hb_font_get_glyph_from_name, [
+    :hb_font_t,     # font
+    :pointer,       # string
+    :uint,          # size
+    :pointer,       # glyph
+  ], :bool
 
   class Font < Base
 
@@ -63,6 +75,26 @@ module Harfbuzz
       string_ptr.get_string(0, 20)
     end
 
-  end
+    def glyph_name(glyph)
+      string_ptr = FFI::MemoryPointer.new(:char, 20)
+      if Harfbuzz.hb_font_get_glyph_name(@hb_font, glyph, string_ptr, 20)
+        string_ptr.get_string(0, 20)
+      else
+        nil
+      end
+    end
+
+    def glyph_from_name(name)
+      name_ptr = FFI::MemoryPointer.new(:char, name.bytesize)
+      name_ptr.put_bytes(0, name)
+      glyph_ptr = FFI::MemoryPointer.new(:uint, 1)
+      if Harfbuzz.hb_font_get_glyph_from_name(@hb_font, name_ptr, name.length, glyph_ptr)
+        glyph_ptr.read_uint
+      else
+        nil
+      end
+    end
+
+ end
 
 end

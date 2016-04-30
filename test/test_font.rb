@@ -18,6 +18,14 @@ module Harfbuzz
       assert ppem.each { |v| v === Numeric && v > 0 }
     end
 
+    def test_glyph_name
+      glyph_name = 'A'
+      glyph = @font.glyph_from_name(glyph_name)
+      refute_nil glyph
+      name = @font.glyph_name(glyph)
+      assert glyph_name, name
+    end
+
   end
 
 end
