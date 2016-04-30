@@ -20,9 +20,9 @@ module Harfbuzz
       info, position = glyph_infos[0], glyph_positions[0]
       glyph_name = @font.glyph_to_string(info.codepoint)
 
-      assert info.codepoint == 320
-      assert position.x_advance > 0
-      assert glyph_name == 'f_i'
+      assert_equal 320, info.codepoint
+      refute_equal 0, position.x_advance
+      assert_equal 'f_i', glyph_name
     end
 
   end
