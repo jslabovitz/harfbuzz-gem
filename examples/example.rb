@@ -24,6 +24,15 @@ font = Harfbuzz::Font.new(face)
 
 puts "Font scale: #{font.scale}"
 puts "Font ppem: #{font.ppem}"
+puts "Font extents:"
+font.extents.each_with_index do |extents, i|
+  puts '  %s: ascender: %d, descender: %d, line gap: %d' % [
+    (i == 0) ? 'horizontal' : 'vertical',
+    extents.ascender,
+    extents.descender,
+    extents.line_gap,
+  ]
+end
 
 #
 # Create a buffer to hold the text and the resulting glyphs/positions.
@@ -72,12 +81,15 @@ glyph_positions = buffer.get_glyph_positions
 buffer.length.times do |i|
   info, position = glyph_infos[i], glyph_positions[i]
   glyph_name = font.glyph_to_string(info[:codepoint])
-  puts "/%-10.10s %5u | mask: %04X | cluster: %2u | advance: %4u,%4u | offset: %4u,%4u" % [
+  glyph_extents = font.glyph_extents(info[:codepoint])
+  puts "/%-10.10s %5u | mask: %04X | cluster: %2u | advance: %4d,%4d | offset: %4d,%4d | bearing: %4d,%4d | size: %4d,%4d" % [
     glyph_name,
     info[:codepoint],
     info[:mask],
     info[:cluster],
     position[:x_advance], position[:y_advance],
     position[:x_offset], position[:y_offset],
+    glyph_extents[:x_bearing], glyph_extents[:y_bearing],
+    glyph_extents[:width], glyph_extents[:height],
   ]
 end
