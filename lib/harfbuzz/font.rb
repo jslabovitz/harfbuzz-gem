@@ -2,6 +2,73 @@ module Harfbuzz
 
   typedef :pointer, :hb_font_t
 
+  class GlyphExtents < FFI::Struct
+    layout \
+      :x_bearing,  :hb_position_t,
+      :y_bearing,  :hb_position_t,
+      :width,      :hb_position_t,
+      :height,     :hb_position_t
+
+    def x_bearing
+      self[:x_bearing]
+    end
+
+    def y_bearing
+      self[:y_bearing]
+    end
+
+    def width
+      self[:width]
+    end
+
+    def height
+      self[:height]
+    end
+  end
+
+  if at_least_version(1,1,3)
+    class FontExtents < FFI::Struct
+      layout \
+        :ascender,   :hb_position_t,
+        :descender,  :hb_position_t,
+        :line_gap,   :hb_position_t,
+        :reserved9,  :hb_position_t, #private
+        :reserved8,  :hb_position_t, #private
+        :reserved7,  :hb_position_t, #private
+        :reserved6,  :hb_position_t, #private
+        :reserved5,  :hb_position_t, #private
+        :reserved4,  :hb_position_t, #private
+        :reserved3,  :hb_position_t, #private
+        :reserved2,  :hb_position_t, #private
+        :reserved1,  :hb_position_t #private
+
+      def inspect
+        "Ascender: #{ascender}\nDescender: #{descender}\nLine Gap: #{line_gap}"
+      end
+
+      def ascender
+        self[:ascender]
+      end
+
+      def descender
+        self[:descender]
+      end
+
+      def line_gap
+        self[:line_gap]
+      end
+    end
+
+    attach_function :hb_font_get_h_extents, [
+      :hb_font_t,         #font
+      FontExtents.by_ref  #extents
+    ], :hb_bool_t
+    attach_function :hb_font_get_v_extents, [
+      :hb_font_t,         #font
+      FontExtents.by_ref  #extents
+    ], :hb_bool_t
+  end
+
   attach_function :hb_font_create, [:hb_face_t], :hb_font_t
   attach_function :hb_font_set_scale, [
     :hb_font_t,     # font
@@ -25,6 +92,11 @@ module Harfbuzz
     :pointer,       # string
     :uint,          # size
   ], :void
+  attach_function :hb_font_get_glyph_extents, [
+    :hb_font_t,          #font
+    :hb_codepoint_t,     #glyph
+    GlyphExtents.by_ref  #extents
+  ], :hb_bool_t
 
   class Font < Base
 
@@ -63,6 +135,32 @@ module Harfbuzz
       string_ptr.get_string(0, 20)
     end
 
+    def glyph_extents(codepoint)
+      glyph_extents = GlyphExtents.new
+      Harfbuzz.hb_font_get_glyph_extents(@hb_font, codepoint, glyph_extents)
+      glyph_extents
+    end
+
+    if Harfbuzz.at_least_version(1,1,3)
+      def h_extents
+        extents_for_direction(:h)
+      end
+
+      def v_extents
+        extents_for_direction(:v)
+      end
+
+      def extents
+        [h_extents, v_extents]
+      end
+
+      def extents_for_direction(direction)
+        extents = FontExtents.new
+        func = "hb_font_get_#{direction}_extents".to_sym
+        Harfbuzz.send(func, @hb_font, extents)
+        extents
+      end
+    end
   end
 
 end
