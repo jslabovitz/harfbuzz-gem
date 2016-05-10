@@ -15,14 +15,14 @@ module Harfbuzz
       glyph_infos = buffer.get_glyph_infos
       glyph_positions = buffer.get_glyph_positions
 
-      assert buffer.length == 1
+      assert { buffer.length == 1 }
 
       info, position = glyph_infos[0], glyph_positions[0]
       glyph_name = @font.glyph_to_string(info.codepoint)
 
-      assert_equal 320, info.codepoint
-      refute_equal 0, position.x_advance
-      assert_equal 'f_i', glyph_name
+      assert { info.codepoint == 320 }
+      assert { position.x_advance != 0 }
+      assert { glyph_name == 'f_i' }
     end
 
   end

@@ -8,8 +8,8 @@ module Harfbuzz
 
     def test_shapers
       shapers = Harfbuzz.shapers
-      assert shapers.kind_of?(Array)
-      assert shapers.include?('fallback')
+      assert { shapers.kind_of?(Array) }
+      assert { shapers.include?('fallback') }
     end
 
   end

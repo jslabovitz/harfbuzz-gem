@@ -7,7 +7,7 @@ module Harfbuzz
     include Setup
 
     def test_length
-      assert @blob.length > 0
+      assert { @blob.length > 0 }
     end
 
   end

@@ -8,18 +8,18 @@ module Harfbuzz
 
     def test_version
       version = Harfbuzz.version
-      assert version.kind_of?(Array)
-      assert version.each { |v| v === Numeric }
+      assert { version.kind_of?(Array) }
+      assert { version.each { |v| v === Numeric } }
     end
 
     def test_version_string
       version = Harfbuzz.version_string
-      assert version.kind_of?(String)
-      assert version =~ /^\d+\.\d+/
+      assert { version.kind_of?(String) }
+      assert { version =~ /^\d+\.\d+/ }
     end
 
     def test_version_at_least
-      assert Harfbuzz.version_at_least(1, 0, 0)
+      assert { Harfbuzz.version_at_least(1, 0, 0) }
     end
 
   end

@@ -2,6 +2,7 @@ $LOAD_PATH.unshift('lib')
 
 require 'harfbuzz'
 require 'minitest/autorun'
+require 'minitest/power_assert'
 
 module Harfbuzz
 
