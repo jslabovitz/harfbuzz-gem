@@ -80,16 +80,16 @@ glyph_infos = buffer.get_glyph_infos
 glyph_positions = buffer.get_glyph_positions
 buffer.length.times do |i|
   info, position = glyph_infos[i], glyph_positions[i]
-  glyph_name = font.glyph_to_string(info[:codepoint])
-  glyph_extents = font.glyph_extents(info[:codepoint])
+  glyph_name = font.glyph_to_string(info.codepoint)
+  glyph_extents = font.glyph_extents(info.codepoint)
   puts "/%-10.10s %5u | mask: %04X | cluster: %2u | advance: %4d,%4d | offset: %4d,%4d | bearing: %4d,%4d | size: %4d,%4d" % [
     glyph_name,
-    info[:codepoint],
-    info[:mask],
-    info[:cluster],
-    position[:x_advance], position[:y_advance],
-    position[:x_offset], position[:y_offset],
-    glyph_extents[:x_bearing], glyph_extents[:y_bearing],
-    glyph_extents[:width], glyph_extents[:height],
+    info.codepoint,
+    info.mask,
+    info.cluster,
+    position.x_advance, position.y_advance,
+    position.x_offset, position.y_offset,
+    glyph_extents.x_bearing, glyph_extents.y_bearing,
+    glyph_extents.width, glyph_extents.height,
   ]
 end
