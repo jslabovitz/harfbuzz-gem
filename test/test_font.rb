@@ -26,6 +26,18 @@ module Harfbuzz
       assert glyph_name, name
     end
 
+    def test_extents
+      h_extents, v_extents = @font.extents
+      assert h_extents.ascender > 0
+      assert v_extents.ascender == 0
+    end
+
+    def test_glyph_extents
+      extents = @font.glyph_extents(1)
+      assert extents.width != 0
+      assert extents.height != 0
+    end
+
   end
 
 end
