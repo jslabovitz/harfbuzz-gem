@@ -1,4 +1,4 @@
-require './test/helpers'
+require_relative 'helpers'
 
 module Harfbuzz
 
