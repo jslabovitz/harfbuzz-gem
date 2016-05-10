@@ -1,14 +1,14 @@
 # CHANGELOG
 
-Only important or user-facing changes are listed here. See commit log for typos, etc.
+Only important or user-facing changes are listed here. See commit log for typos, refactoring, documentation tweaks, etc.
 
 ## 0.3 / 2016-05-10
 
 - Add new Harfbuzz bindings:
     - hb_font_extents() and hb_glyph_extents() (code by Stafford Brunk)
-    - hb_font_get_glyph_name() and hb_font_get_glyph_from_name()
     - hb_version_atleast() (also implemented by Stafford Brunk)
-- Add convenience accessors to most classes (no more foo[:bar])
+    - hb_font_get_glyph_name() and hb_font_get_glyph_from_name()
+- Add convenience accessors to most classes (no more foo[:bar]).
 - Use hb_version_atleast() to check for minimum version number, instead of Gem's magic.
 - Show additional font information in example script.
 - Add tests to cover most of Harfbuzz API.
