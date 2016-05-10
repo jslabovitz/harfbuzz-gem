@@ -2,7 +2,6 @@ module Harfbuzz
 
   typedef :pointer, :hb_buffer_t
   typedef :uint32, :hb_mask_t
-  typedef :int32, :hb_position_t
 
   class GlyphInfo < FFI::Struct
 
