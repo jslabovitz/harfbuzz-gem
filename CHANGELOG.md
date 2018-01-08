@@ -2,6 +2,11 @@
 
 Only important or user-facing changes are listed here. See commit log for typos, refactoring, documentation tweaks, etc.
 
+## 0.4 / 2018-01-08
+
+- Modernize/simplify gem structure.
+- Improve exception messages.
+
 ## 0.3 / 2016-05-10
 
 - Add new Harfbuzz bindings:
