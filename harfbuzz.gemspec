@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name          = 'harfbuzz'
-  s.version       = '0.3'
+  s.version       = '0.4'
   s.summary       = 'Ruby interface to the Harfbuzz text shaping engine'
   s.author        = 'John Labovitz'
   s.email         = 'johnl@johnlabovitz.com'
