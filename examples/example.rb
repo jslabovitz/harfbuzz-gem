@@ -14,7 +14,7 @@ puts "Shapers: #{Harfbuzz.shapers.join(', ')}"
 # Create a font to be used for shaping. To get the most of out this example, use an OpenType font.
 #
 
-face = Harfbuzz::Face.new(File.open('/Library/Fonts/ACaslonPro-Regular.otf', 'rb'))
+face = Harfbuzz::Face.new(File.open('/Users/johnl/Fonts/A/Adobe Caslon Pro/ACaslonPro-Regular.otf', 'rb'))
 
 puts "Font face index: #{face.index}"
 puts "Font face upem: #{face.upem}"
