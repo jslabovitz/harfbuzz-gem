@@ -1,10 +1,9 @@
-require 'rubygems/tasks'
+require 'bundler/gem_tasks'
+Bundler.require
 require 'rake/testtask'
 
-Gem::Tasks.new
-Rake::TestTask.new
-
-desc 'Run benchmark'
-task :benchmark do
-  load './examples/benchmark.rb'
+Rake::TestTask.new do |t|
+  t.test_files = FileList['test/*_test.rb']
 end
+
+task :default => :test

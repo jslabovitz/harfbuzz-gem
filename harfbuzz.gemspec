@@ -14,9 +14,9 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
   s.require_path  = 'lib'
 
-  s.add_dependency 'ffi', '~> 1.9'
+  s.add_dependency 'ffi', '~> 1.15'
 
-  s.add_development_dependency 'rake', '~> 12.3'
-  s.add_development_dependency 'minitest', '~> 5.11'
+  s.add_development_dependency 'rake', '~> 13.0'
+  s.add_development_dependency 'minitest', '~> 5.15'
   s.add_development_dependency 'minitest-power_assert', '~> 0.3'
 end

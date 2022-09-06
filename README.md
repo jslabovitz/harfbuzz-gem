@@ -53,6 +53,8 @@ Memory management may not be correct. (I've seen crashes when processing large a
 
 ## To-do
 
+- Update for recent (version 4.0+) versions of Harfbuzz.
+
 - Implement hb_buffer_set_* functions.
 
 - Add documentation.
