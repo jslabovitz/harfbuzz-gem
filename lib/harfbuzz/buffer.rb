@@ -62,6 +62,7 @@ module Harfbuzz
   end
 
   attach_function :hb_buffer_create, [], :hb_buffer_t
+  attach_function :hb_buffer_destroy, [:hb_buffer_t], :void
   attach_function :hb_buffer_add_utf8, [
     :hb_buffer_t,   # buffer
     :pointer,       # text

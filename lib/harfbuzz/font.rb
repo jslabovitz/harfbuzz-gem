@@ -76,6 +76,7 @@ module Harfbuzz
   end
 
   attach_function :hb_font_create, [:hb_face_t], :hb_font_t
+  attach_function :hb_font_destroy, [:hb_font_t], :void
   attach_function :hb_font_set_scale, [
     :hb_font_t,     # font
     :int,           # x_scale

@@ -6,6 +6,7 @@ module Harfbuzz
     :hb_blob_t,         # blob
     :uint,              # index
   ], :hb_face_t
+  attach_function :hb_face_destroy, [:hb_face_t], :void
   attach_function :hb_face_get_index, [:hb_face_t], :uint
   attach_function :hb_face_get_upem, [:hb_face_t], :uint
   attach_function :hb_face_get_glyph_count, [:hb_face_t], :uint
