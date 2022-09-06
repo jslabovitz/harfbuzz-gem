@@ -4,7 +4,7 @@ module Harfbuzz
 
     def self.finalize(method, ptr)
       proc {
-        Harfbuzz.send(method, ptr) unless ptr == 0
+        Harfbuzz.send(method, ptr) if ptr
       }
     end
 
