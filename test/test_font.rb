@@ -43,6 +43,11 @@ module Harfbuzz
       assert { extents.height != 0 }
     end
 
+    def test_glyph_advance
+      advance = @font.glyph_advance_for_direction(1, Harfbuzz::HB_DIRECTION_LTR)
+      assert { advance > 0 }
+    end
+
   end
 
 end

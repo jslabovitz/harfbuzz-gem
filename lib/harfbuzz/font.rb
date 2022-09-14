@@ -123,6 +123,14 @@ module Harfbuzz
     :hb_codepoint_t,     # glyph
     GlyphExtents.by_ref  # extents
   ], :hb_bool_t
+  attach_function :hb_font_get_glyph_advance_for_direction, [
+    :hb_font_t,          # font
+    :hb_codepoint_t,     # glyph
+    # :hb_direction_t,     # direction
+    :int,                # direction
+    :pointer,            # x
+    :pointer,            # y
+  ], :void
 
   class Font < Base
 
@@ -190,6 +198,17 @@ module Harfbuzz
       glyph_extents = GlyphExtents.new
       Harfbuzz.hb_font_get_glyph_extents(@hb_font, codepoint, glyph_extents)
       glyph_extents
+    end
+
+    def glyph_advance_for_direction(glyph, direction)
+      x_ptr = FFI::MemoryPointer.new(:int32, 1)
+      y_ptr = FFI::MemoryPointer.new(:int32, 1)
+      Harfbuzz.hb_font_get_glyph_advance_for_direction(@hb_font, glyph, direction, x_ptr, y_ptr)
+      if Harfbuzz.hb_direction_is_horizontal(direction)
+        x_ptr.read_int32
+      else
+        y_ptr.read_int32
+      end
     end
 
     if Harfbuzz.version_at_least(1,1,3)
