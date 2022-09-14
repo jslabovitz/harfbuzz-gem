@@ -6,6 +6,11 @@ module Harfbuzz
 
     include Setup
 
+    def test_init_with_size
+      font2 = Harfbuzz::Font.new(@face, 12)
+      assert { font2.ptem == 12.0 }
+    end
+
     def test_scale
       scale = @font.scale
       assert { scale.kind_of?(Array) }

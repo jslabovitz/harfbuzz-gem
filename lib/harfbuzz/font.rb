@@ -82,6 +82,13 @@ module Harfbuzz
     :int,           # x_scale
     :int,           # y_scale
   ], :void
+  attach_function :hb_font_set_ptem, [
+    :hb_font_t,
+    :float,
+  ], :void
+  attach_function :hb_font_get_ptem, [
+    :hb_font_t,
+  ], :float
   attach_function :hb_ft_font_set_funcs, [:hb_font_t], :void
   attach_function :hb_font_get_scale, [
     :hb_font_t,     # font
@@ -121,9 +128,10 @@ module Harfbuzz
 
     attr_reader :hb_font
 
-    def initialize(face)
+    def initialize(face, size=nil)
       @hb_font = Harfbuzz.hb_font_create(face.hb_face)
-      Harfbuzz.hb_font_set_scale(@hb_font, face.upem, face.upem)
+      # Harfbuzz.hb_font_set_scale(@hb_font, face.upem, face.upem)
+      Harfbuzz.hb_font_set_ptem(@hb_font, size) if size
       Harfbuzz.hb_ft_font_set_funcs(@hb_font)
       define_finalizer(:hb_font_destroy, @hb_font)
     end
@@ -146,6 +154,10 @@ module Harfbuzz
         ppem_x_ptr.read_uint,
         ppem_y_ptr.read_uint,
       ]
+    end
+
+    def ptem
+      Harfbuzz.hb_font_get_ptem(@hb_font)
     end
 
     def glyph_to_string(glyph)
