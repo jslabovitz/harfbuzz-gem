@@ -19,4 +19,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rake', '~> 13.0'
   s.add_development_dependency 'minitest', '~> 5.16'
   s.add_development_dependency 'minitest-power_assert', '~> 0.3'
+
+  s.metadata['msys2_mingw_dependencies'] = 'harfbuzz'
 end

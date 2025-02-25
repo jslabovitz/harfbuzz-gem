@@ -6,7 +6,9 @@ module Harfbuzz
 
   extend FFI::Library
 
-  ffi_lib 'harfbuzz'
+  lib_names = ['harfbuzz']
+  lib_names.unshift('libharfbuzz-0') if RbConfig::CONFIG['host_os'] =~ /mswin|mingw|cygwin/
+  ffi_lib(lib_names)
 
   typedef :pointer, :hb_destroy_func_t
   typedef :uint32,  :hb_codepoint_t
