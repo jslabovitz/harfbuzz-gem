@@ -28,7 +28,7 @@ The Harfbuzz gem is composed of two layers: a low-level direct interface to Harf
 
 The low-level interface is a one-to-one mapping of Harfbuzz C functions to Ruby methods, implemented using the [FFI](https://github.com/ffi/ffi) library. For example, the Harfbuzz C function `hb_version_string()`  is available in Ruby as `Harfbuzz.hb_version_string`. However, as the low-level methods return C pointers wrapped in FFI objects, this layer is generally not useful to a Ruby programmer.
 
-The high-level interface abstracts the C functions, structures, and pointers into Ruby objects. For example, the aftermentioned `hb_version_string()` function is more usefully available via `Harfbuzz.version_string`, which returns a Ruby string containing with the version of the Harfbuzz library.
+The high-level interface abstracts the C functions, structures, and pointers into Ruby objects. For example, `hb_version_string()` function is more usefully available via `Harfbuzz.version_string`, which returns a Ruby string containing with the version of the Harfbuzz library.
 
 Where appropriate, Ruby classes have been constructed to map to the concepts in Harfbuzz. Hence:
 
