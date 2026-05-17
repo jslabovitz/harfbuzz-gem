@@ -12,6 +12,12 @@ module Harfbuzz
       :var1,      :uint32,  # private
       :var2,      :uint32   # private
 
+    def inspect
+      "<#{self} codepoint = 0x%04x, mask = 0b%032b, cluster = %d>" % [
+        codepoint, mask, cluster,
+      ]
+    end
+
     def codepoint
       self[:codepoint]
     end
@@ -37,8 +43,8 @@ module Harfbuzz
 
     def inspect
       "<#{self} %s>" % [
-        %w{x_advance y_advance x_offset y_offset}.map { |k|
-          "#{k} = #{self[k.to_sym].inspect}"
+        %i{x_advance y_advance x_offset y_offset}.map { |k|
+          "#{k} = #{self[k].inspect}"
         }.join(', ')
       ]
     end
