@@ -138,7 +138,7 @@ module Harfbuzz
 
     def initialize(face, size=nil)
       @hb_font = Harfbuzz.hb_font_create(face.hb_face)
-      # Harfbuzz.hb_font_set_scale(@hb_font, face.upem, face.upem)
+      Harfbuzz.hb_font_set_scale(@hb_font, face.upem, face.upem)
       Harfbuzz.hb_font_set_ptem(@hb_font, size) if size
       Harfbuzz.hb_ft_font_set_funcs(@hb_font)
       define_finalizer(:hb_font_destroy, @hb_font)
