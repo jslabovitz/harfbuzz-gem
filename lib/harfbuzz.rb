@@ -49,7 +49,9 @@ end
 require 'harfbuzz/version'
 require 'harfbuzz/base'
 require 'harfbuzz/blob'
+require 'harfbuzz/buffer'
+require 'harfbuzz/language'
+
 require 'harfbuzz/face'
 require 'harfbuzz/font'
-require 'harfbuzz/buffer'
 require 'harfbuzz/shaping'

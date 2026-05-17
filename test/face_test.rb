@@ -18,6 +18,12 @@ module Harfbuzz
       assert { @face.glyph_count > 0 }
     end
 
+    def test_names
+      assert { @face.font_family_name == 'Adobe Caslon Pro' }
+      assert { @face.font_subfamily_name == 'Regular' }
+      assert { @face.postscript_name == 'ACaslonPro-Regular' }
+    end
+
   end
 
 end
